@@ -1,0 +1,441 @@
+{
+	"info": {
+		"_postman_id": "c5ce3a1e-3751-4f05-9d5e-038491bb613c",
+		"name": "Medical Equipment Inventory Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "36703471"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"pm.collectionVariables.set(\"token\", jsonData.token);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"mike\",\r\n    \"password\": \"password\",\r\n    \"confirmPassword\": \"password\",\r\n    \"role\": \"ROLE_USER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Departments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/departments"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Devices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/devices"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Models",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/models"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Technicians",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/technicians"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Devices by Owning Department",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/departments/5/devices"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Devices by Manufacturer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/devices/search?mfgName=sony",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"devices",
+						"search"
+					],
+					"query": [
+						{
+							"key": "mfgName",
+							"value": "sony"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Devices By Install Date Range",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/devices/dateSearch?startDate=2005-01-01&endDate=2012-01-01",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"devices",
+						"dateSearch"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2005-01-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2012-01-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Device by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/devices/12"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Department",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"departmentName\": \"Oncology\",\r\n        \"maintenanceMonth\": 4,\r\n        \"assignedTechnician\": 3  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/departments"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Department",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"departmentName\": \"Oncology\",\r\n        \"maintenanceMonth\": 9,\r\n        \"assignedTechnician\": 8 \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/departments/11"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Department",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseUrl}}/departments/11"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Technician",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fullName\": \"Michael Ciccone\",\r\n        \"emailAddress\": \"developer@hotmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/technicians"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Technician",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fullName\": \"Tom Beerbower\",\r\n        \"emailAddress\": \"tom@beerbower.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/technicians/21"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Technician",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseUrl}}/technicians/21"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Device",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"serialNumber\": \"abc123\",\r\n        \"modelId\": 6,\r\n        \"owningDepartment\": 6,\r\n        \"installDate\": \"2005-09-08\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/devices"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Device",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": "{{baseUrl}}/devices/51"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Device",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseUrl}}/devices/52"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Model",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"url": "{{baseUrl}}/models"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Model",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"modelName\": \"Medfusion\",\r\n        \"manufacturerName\": \"Smith's Medical\",\r\n        \"maintenanceSchedule\": \"annual\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/models/31"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Model",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseUrl}}/models/31"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "default"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY1NzY0MzI3NH0.DVYTDK3fsn80scCDYSCxdN4itbTObMVVzlpJmNZd1pC-Uh1fjLwUPN-du-OjeUTFBtDWvEuPiVjXXd1L_Dzh-A",
+			"type": "default"
+		}
+	]
+}

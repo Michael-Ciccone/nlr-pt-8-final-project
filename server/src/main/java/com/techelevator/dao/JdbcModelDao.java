@@ -76,7 +76,7 @@ public class JdbcModelDao implements ModelDao {
     @Override
     public Model createModel(Model model) {
         Model newModel = null;
-        String sql = "INSERT INTO model (model_name, manufacturer_name, maintenance_schedule, model_description) VALUES (?, ?, ?, ?) RETURNING model_id";
+        String sql = "insert into model (model_name, manufacturer_name, maintenance_schedule, model_description) values (?, ?, ?, ?) RETURNING model_id";
 
         try {
             Integer newModelId = template.queryForObject(sql, int.class, model.getModelName(), model.getManufacturerName(), model.getMaintenanceSchedule(), model.getModelDescription());

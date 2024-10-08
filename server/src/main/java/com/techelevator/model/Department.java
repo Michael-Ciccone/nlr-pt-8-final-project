@@ -11,7 +11,7 @@ public class Department {
     @NotNull(message="The maintenance month field must not be null.")
     private int maintenanceMonth;
     @NotNull(message="The assigned technician field must not be null.")
-    private int assignedTechnician;
+    private String assignedTechnician;
 
     public void setId(int id) {
         this.id = id;
@@ -26,7 +26,7 @@ public class Department {
         this.maintenanceMonth = maintenanceMonth;
     }
 
-    public void setAssignedTechnician(int assignedTechnician) {
+    public void setAssignedTechnician(String assignedTechnician) {
         this.assignedTechnician = assignedTechnician;
     }
 
@@ -34,7 +34,7 @@ public class Department {
 
     }
 
-    public Department(int id, String departmentName, int maintenanceMonth, int assignedTechnician) {
+    public Department(int id, String departmentName, int maintenanceMonth, String assignedTechnician) {
         this.id = id;
         this.departmentName = departmentName;
         this.maintenanceMonth = maintenanceMonth;
@@ -53,7 +53,7 @@ public class Department {
         return maintenanceMonth;
     }
 
-    public int getAssignedTechnician() {
+    public String getAssignedTechnician() {
         return assignedTechnician;
     }
 

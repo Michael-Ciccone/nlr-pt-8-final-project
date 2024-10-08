@@ -27,7 +27,8 @@ public class JdbcDeviceDao implements DeviceDao {
             int modelId = rs.getInt("model_id");
             int owningDepartment = rs.getInt("owning_department");
             LocalDate installDate = rs.getDate("install_date").toLocalDate();
-            Device device = new Device(id, serialNumber, modelId, owningDepartment, installDate);
+            String picture = rs.getString("picture");
+            Device device = new Device(id, serialNumber, modelId, owningDepartment, installDate, picture);
             return device;
 
         }
@@ -43,7 +44,8 @@ public class JdbcDeviceDao implements DeviceDao {
         int modelId = rowSet.getInt("model_id");
         int owningDepartment = rowSet.getInt("owning_department");
         LocalDate installDate = rowSet.getDate("install_date").toLocalDate();
-        Device device = new Device(id, serialNumber, modelId, owningDepartment, installDate);
+        String picture = rowSet.getString("picture");
+        Device device = new Device(id, serialNumber, modelId, owningDepartment, installDate, picture);
         return device;
     }
 
@@ -111,10 +113,10 @@ public class JdbcDeviceDao implements DeviceDao {
     @Override
     public Device createDevice(Device device) {
         Device newDevice = null;
-        String sql = "INSERT INTO device (serial_number, model_id, owning_department, install_date) VALUES (?, ?, ?, ?) RETURNING device_id";
+        String sql = "INSERT INTO device (serial_number, model_id, owning_department, install_date, picture) VALUES (?, ?, ?, ?, ?) RETURNING device_id";
 
         try {
-            Integer newDeviceId = template.queryForObject(sql, int.class, device.getSerialNumber(), device.getModelId(), device.getOwningDepartment(), device.getInstallDate());
+            Integer newDeviceId = template.queryForObject(sql, int.class, device.getSerialNumber(), device.getModelId(), device.getOwningDepartment(), device.getInstallDate(), device.getPicture());
             newDevice = getDeviceById(newDeviceId);
             return newDevice;
         } catch (CannotGetJdbcConnectionException e) {
@@ -125,10 +127,10 @@ public class JdbcDeviceDao implements DeviceDao {
     @Override
     public Device updateDevice(Device device) {
         Device updatedDevice = null;
-        String sql = "UPDATE device SET serial_number = ?, model_id = ?, owning_department = ?, install_date = ? WHERE device_id = ?";
+        String sql = "UPDATE device SET serial_number = ?, model_id = ?, owning_department = ?, install_date = ?, picture = ? WHERE device_id = ?";
 
         try {
-            template.update(sql, device.getSerialNumber(), device.getModelId(), device.getOwningDepartment(), device.getInstallDate(), device.getId());
+            template.update(sql, device.getSerialNumber(), device.getModelId(), device.getOwningDepartment(), device.getInstallDate(), device.getPicture(), device.getId());
             updatedDevice = getDeviceById(device.getId());
             return updatedDevice;
         } catch (CannotGetJdbcConnectionException e) {

@@ -12,10 +12,10 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import static org.junit.Assert.assertNull;
 public class JdbcDepartmentDaoTests extends BaseDaoTests{
 
-    private static final Department DEPARTMENT_1 = new Department(1, "Department 1", 1, 1);
-    private static final Department DEPARTMENT_2 = new Department(2, "Department 2", 2, 2);
-    private static final Department DEPARTMENT_3 = new Department(3, "Department 3", 3, 3);
-    private static final Department DEPARTMENT_4 = new Department(4, "Department 4", 4, 3);
+    private static final Department DEPARTMENT_1 = new Department(1, "Department 1", 1, "tech1");
+    private static final Department DEPARTMENT_2 = new Department(2, "Department 2", 2, "tech2");
+    private static final Department DEPARTMENT_3 = new Department(3, "Department 3", 3, "tech3");
+    private static final Department DEPARTMENT_4 = new Department(4, "Department 4", 4, "tech4");
 
     private JdbcDepartmentDao dao;
 
@@ -48,7 +48,7 @@ public class JdbcDepartmentDaoTests extends BaseDaoTests{
         Department newDepartment = new Department();
         newDepartment.setDepartmentName("Behavioral Health");
         newDepartment.setMaintenanceMonth(5);
-        newDepartment.setAssignedTechnician(2);
+        newDepartment.setAssignedTechnician("tech5");
 
         Department createdDepartment = dao.createDepartment(newDepartment);
 
@@ -56,7 +56,7 @@ public class JdbcDepartmentDaoTests extends BaseDaoTests{
         Assert.assertTrue("createDepartment did not return a department with id set.", createdDepartment.getId() > 0);
         Assert.assertEquals("createDepartment did not return a department with the correct department name.", "Behavioral Health", newDepartment.getDepartmentName());
         Assert.assertEquals("createDepartment did not return a department with the correct maintenance month.", 5, newDepartment.getMaintenanceMonth());
-        Assert.assertEquals("createDepartment did not return a department with the correct assigned technician.", 2, newDepartment.getAssignedTechnician());
+        Assert.assertEquals("createDepartment did not return a department with the correct assigned technician.", "tech5", newDepartment.getAssignedTechnician());
 
         Department retrievedDepartment = getDepartmentByIdForTestVerification(createdDepartment.getId());
         Assert.assertNotNull("createDepartment does not appear to have correctly persisted the newly created department. It could not be found by id.", retrievedDepartment);
@@ -70,7 +70,7 @@ public class JdbcDepartmentDaoTests extends BaseDaoTests{
         existingDepartment.setId(DEPARTMENT_2.getId());
         existingDepartment.setDepartmentName("Microbiology");
         existingDepartment.setMaintenanceMonth(9);
-        existingDepartment.setAssignedTechnician(3);
+        existingDepartment.setAssignedTechnician("tech6");
 
         Department updatedDepartment = dao.updateDepartment(existingDepartment);
 
@@ -91,7 +91,7 @@ public class JdbcDepartmentDaoTests extends BaseDaoTests{
 
     }
 
-    private static Department mapValuesToDepartment(int departmentId, String departmentName, int maintenanceMonth, int assignedTech) {
+    private static Department mapValuesToDepartment(int departmentId, String departmentName, int maintenanceMonth, String assignedTech) {
 
         Department department = new Department();
         department.setId(departmentId);
@@ -118,7 +118,7 @@ public class JdbcDepartmentDaoTests extends BaseDaoTests{
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
 
         if (results.next()) {
-            department = mapValuesToDepartment(results.getInt("department_id"), results.getString("department_name"), results.getInt("base_maintenance_month"), results.getInt("assigned_technician"));
+            department = mapValuesToDepartment(results.getInt("department_id"), results.getString("department_name"), results.getInt("base_maintenance_month"), results.getString("assigned_technician"));
         }
         return department;
     }

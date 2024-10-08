@@ -14,10 +14,10 @@ import java.time.LocalDate;
 import static org.junit.Assert.assertNull;
 public class JdbcDeviceDaoTests extends BaseDaoTests {
 
-    private static final Device DEVICE_1 = new Device(1, "sn1", 4, 1, LocalDate.parse("2002-08-05"));
-    private static final Device DEVICE_2 = new Device(2, "sn2", 2, 3, LocalDate.parse("2018-11-23"));
-    private static final Device DEVICE_3 = new Device(3, "sn3", 3, 2, LocalDate.parse("2014-01-21"));
-    private static final Device DEVICE_4 = new Device(4, "sn4", 1, 3, LocalDate.parse("2001-06-04"));
+    private static final Device DEVICE_1 = new Device(1, "sn1", 4, 1, LocalDate.parse("2002-08-05"), "pic1");
+    private static final Device DEVICE_2 = new Device(2, "sn2", 2, 3, LocalDate.parse("2018-11-23"), "pic2");
+    private static final Device DEVICE_3 = new Device(3, "sn3", 3, 2, LocalDate.parse("2014-01-21"), "pic3");
+    private static final Device DEVICE_4 = new Device(4, "sn4", 1, 3, LocalDate.parse("2001-06-04"), "pic4");
     private JdbcDeviceDao dao;
 
     @Before
@@ -50,6 +50,7 @@ public class JdbcDeviceDaoTests extends BaseDaoTests {
         newDevice.setModelId(2);
         newDevice.setOwningDepartment(2);
         newDevice.setInstallDate(LocalDate.parse("2009-03-08"));
+        newDevice.setPicture("pic6");
 
         Device createdDevice = dao.createDevice(newDevice);
 
@@ -59,6 +60,7 @@ public class JdbcDeviceDaoTests extends BaseDaoTests {
         Assert.assertEquals("createDevice did not return a device with the correct model ID.", 2, newDevice.getModelId());
         Assert.assertEquals("createDevice did not return a device with the correct owning department.", 2, newDevice.getOwningDepartment());
         Assert.assertEquals("createDevice did not return a device with the correct install date.", LocalDate.parse("2009-03-08"), newDevice.getInstallDate());
+        Assert.assertEquals("createDevice did not return a device with the correct picture url.", "pic6", newDevice.getPicture());
 
         Device retrievedDevice = getDeviceByIdForTestVerification(createdDevice.getId());
         Assert.assertNotNull("createDevice does not appear to have correctly persisted the newly created device. It could not be found by id.", retrievedDevice);
@@ -74,6 +76,7 @@ public class JdbcDeviceDaoTests extends BaseDaoTests {
         existingDevice.setModelId(3);
         existingDevice.setOwningDepartment(3);
         existingDevice.setInstallDate(LocalDate.parse("2016-07-01"));
+        existingDevice.setPicture("pic7");
 
         Device updatedDevice = dao.updateDevice(existingDevice);
 
@@ -94,7 +97,7 @@ public class JdbcDeviceDaoTests extends BaseDaoTests {
 
     }
 
-    private static Device mapValuesToDevice(int deviceId, String serialNumber, int modelId, int owningDepartment, LocalDate installDate) {
+    private static Device mapValuesToDevice(int deviceId, String serialNumber, int modelId, int owningDepartment, LocalDate installDate, String picture) {
 
         Device device = new Device();
         device.setId(deviceId);
@@ -102,6 +105,7 @@ public class JdbcDeviceDaoTests extends BaseDaoTests {
         device.setModelId(modelId);
         device.setOwningDepartment(owningDepartment);
         device.setInstallDate(installDate);
+        device.setPicture(picture);
 
         return device;
 
@@ -113,6 +117,7 @@ public class JdbcDeviceDaoTests extends BaseDaoTests {
         Assert.assertEquals(message, expected.getModelId(), actual.getModelId());
         Assert.assertEquals(message, expected.getOwningDepartment(), actual.getOwningDepartment());
         Assert.assertEquals(message, expected.getInstallDate(), actual.getInstallDate());
+        Assert.assertEquals(message, expected.getPicture(), actual.getPicture());
     }
 
     private Device getDeviceByIdForTestVerification(int id) {
@@ -123,7 +128,7 @@ public class JdbcDeviceDaoTests extends BaseDaoTests {
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
 
         if (results.next()) {
-            device = mapValuesToDevice(results.getInt("device_id"), results.getString("serial_number"), results.getInt("model_id"), results.getInt("owning_department"), results.getDate("install_date").toLocalDate());
+            device = mapValuesToDevice(results.getInt("device_id"), results.getString("serial_number"), results.getInt("model_id"), results.getInt("owning_department"), results.getDate("install_date").toLocalDate(), results.getString("picture"));
         }
         return device;
     }

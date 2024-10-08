@@ -24,7 +24,7 @@ public class JdbcDepartmentDao implements DepartmentDao {
             int id = rs.getInt("department_id");
             String departmentName = rs.getString("department_name");
             int maintenanceMonth = rs.getInt("base_maintenance_month");
-            int assignedTechnician = rs.getInt("assigned_technician");
+            String assignedTechnician = rs.getString("assigned_technician");
             Department department = new Department(id, departmentName, maintenanceMonth, assignedTechnician);
             return department;
         }
@@ -39,7 +39,7 @@ public class JdbcDepartmentDao implements DepartmentDao {
         int id = rowSet.getInt("department_id");
         String departmentName = rowSet.getString("department_name");
         int maintenanceMonth = rowSet.getInt("base_maintenance_month");
-        int assignedTechnician = rowSet.getInt("assigned_technician");
+        String assignedTechnician = rowSet.getString("assigned_technician");
         Department department = new Department(id, departmentName, maintenanceMonth, assignedTechnician);
         return department;
     }

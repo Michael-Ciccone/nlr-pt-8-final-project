@@ -24,7 +24,7 @@ CREATE TABLE technician (
 	technician_id serial NOT NULL,
 	full_name varchar(200) NOT NULL,
     email_address varchar(200) NULL,
-	CONSTRAINT PK_technician PRIMARY KEY(full_name)
+	CONSTRAINT PK_technician PRIMARY KEY(technician_id)
 );
 
 CREATE TABLE department (
@@ -32,8 +32,7 @@ CREATE TABLE department (
     department_name varchar(200) NOT NULL,
 	base_maintenance_month int NULL,
 	assigned_technician varchar(200) NOT NULL,
-    CONSTRAINT PK_department PRIMARY KEY(department_id),
-    CONSTRAINT FK_assigned_technician FOREIGN KEY(assigned_technician) REFERENCES technician(full_name)
+    CONSTRAINT PK_department PRIMARY KEY(department_id)
 );
 
 CREATE TABLE device (

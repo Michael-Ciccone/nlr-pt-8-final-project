@@ -17,6 +17,48 @@ const departments = [
     maintenanceMonth: 11,
     assignedTechnician: "Boondock the Cat"
   },
+  {
+    id: 4,
+    departmentName: "Pediatrics",
+    maintenanceMonth: 7,
+    assignedTechnician: "Michael Ciccone"
+  },
+  {
+    id: 5,
+    departmentName: "Neurology",
+    maintenanceMonth: 9,
+    assignedTechnician: "Tom Beerbower"
+  },
+  {
+    id: 6,
+    departmentName: "Oncology",
+    maintenanceMonth: 11,
+    assignedTechnician: "Boondock the Cat"
+  },
+  {
+    id: 7,
+    departmentName: "Emergency",
+    maintenanceMonth: 7,
+    assignedTechnician: "Michael Ciccone"
+  },
+  {
+    id: 8,
+    departmentName: "Dermatology",
+    maintenanceMonth: 9,
+    assignedTechnician: "Tom Beerbower"
+  },
+  {
+    id: 9,
+    departmentName: "Gastroenterology",
+    maintenanceMonth: 11,
+    assignedTechnician: "Boondock the Cat"
+  },
+  {
+    id: 10,
+    departmentName: "Urology",
+    maintenanceMonth: 7,
+    assignedTechnician: "Michael Ciccone"
+  }
 ];
 
 const models = [
@@ -134,7 +176,7 @@ const devices = [
 
 
 
-const resourceService = {
+const ResourceService = {
   getDepartments() {
     return departments
   },
@@ -146,4 +188,4 @@ const resourceService = {
   },
 };
 
-export { resourceService };
+export default ResourceService;

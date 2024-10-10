@@ -36,6 +36,7 @@
   </div>
 </template>
 
+
 <style scoped>
 
 #medical-app {

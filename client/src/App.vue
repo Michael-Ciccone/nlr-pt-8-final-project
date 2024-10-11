@@ -24,7 +24,8 @@
           <button>Login</button>
         </router-link>
       </div>
-        <input type="text" placeholder="Search By Device ID..."/>
+        <input type="text" placeholder="Search By Device ID..." v-model="deviceId"
+          @keyup.enter="navigateToDevice"/>
     </nav>
     </header>
     <main>
@@ -35,6 +36,25 @@
     </footer>
   </div>
 </template>
+
+<script>
+
+export default {
+  data() {
+    return {
+      deviceId: '',
+    };
+  },
+  methods: {
+    navigateToDevice() {
+      if (this.deviceId) {
+        this.$router.push({ name: 'DevicePage', query: { deviceId: this.deviceId } });
+      }
+    }
+}
+}
+</script>
+
 
 
 <style scoped>

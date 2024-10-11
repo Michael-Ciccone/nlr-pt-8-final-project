@@ -2,10 +2,12 @@ import { createRouter as createRouter, createWebHistory } from 'vue-router'
 import { useStore } from 'vuex'
 
 // Import components
-import DemoView from '../views/DemoView.vue'
+import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import LogoutView from '../views/LogoutView.vue'
 import RegisterView from '../views/RegisterView.vue'
+import DevicesView from '../views/DevicesView.vue'
+import DeviceDetailsView from '../views/DeviceDetailsView.vue'
 
 
 /**
@@ -20,7 +22,7 @@ const routes = [
     {
       path: '/',
       name: 'home',
-      component: DemoView,
+      component: HomeView,
       meta: {
         requiresAuth: false
       }
@@ -48,6 +50,16 @@ const routes = [
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: '/devices/:departmentId',
+      name: 'DeviceList',
+      component: DevicesView
+    },
+    {
+      path: '/device',
+      name: 'DevicePage',
+      component: DeviceDetailsView
     }
   ];
 

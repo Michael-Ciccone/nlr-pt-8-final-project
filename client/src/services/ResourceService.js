@@ -186,6 +186,12 @@ const ResourceService = {
   getModels() {
     return models;
   },
+  getDepartmentById(departmentId) {
+    return this.getDepartments().find(department => department.id === departmentId);
+  },
+  getDevicesByDepartment(departmentId) {
+    return this.getDevices().filter(device => device.owningDepartment === departmentId);
+  }
 };
 
 export default ResourceService;

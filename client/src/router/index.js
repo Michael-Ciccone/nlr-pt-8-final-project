@@ -8,6 +8,8 @@ import LogoutView from '../views/LogoutView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import DevicesView from '../views/DevicesView.vue'
 import DeviceDetailsView from '../views/DeviceDetailsView.vue'
+import CreateDepartmentView from '../views/CreateDepartmentView.vue'
+import CreateDeviceView from '../views/CreateDeviceView.vue'
 
 
 /**
@@ -60,6 +62,54 @@ const routes = [
       path: '/device',
       name: 'DevicePage',
       component: DeviceDetailsView
+    },
+    {
+      path: '/departments/create',
+      name: 'CreateDepartment',
+      component: CreateDepartmentView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/departments/delete',
+      name: 'DeleteDepartment',
+      component: CreateDepartmentView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/departments/update',
+      name: 'UpdateDepartment',
+      component: CreateDepartmentView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/devices/create',
+      name: 'CreateDevice',
+      component: CreateDeviceView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/devices/delete',
+      name: 'DeleteDevice',
+      component: CreateDeviceView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/devices/update',
+      name: 'UpdateDevice',
+      component: CreateDeviceView,
+      meta: {
+        requiresAuth: true
+      }
     }
   ];
 

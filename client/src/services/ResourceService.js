@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const departments = [
   {
     id: 1,
@@ -178,7 +180,7 @@ const devices = [
 
 const ResourceService = {
   getDepartments() {
-    return departments
+    return departments;
   },
   getDevices() {
     return devices;
@@ -191,6 +193,24 @@ const ResourceService = {
   },
   getDevicesByDepartment(departmentId) {
     return this.getDevices().filter(device => device.owningDepartment === departmentId);
+  },
+  async createDepartment(department) {
+    try {
+      const response = await axios.post('/api/departments', department);
+      return response.data;
+    } catch (error) {
+      console.error('Error creating department:', error);
+      throw error;
+    }
+  },
+  async createDevice(device) {
+    try {
+      const response = await axios.post('/api/devices', device);
+      return response.data;
+    } catch (error) {
+      console.error('Error creating device:', error);
+      throw error;
+    }
   }
 };
 

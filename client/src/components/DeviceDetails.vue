@@ -25,6 +25,23 @@
         <section id="device-pic" v-if="device">
             <img :src="'img/' + device.pic" alt="Device Picture">
         </section>
+
+        <section id="edit-device-button-container">
+            <h3 class="technician-tools">Technician Tools:</h3>
+            <div class="vertical-buttons">
+                <router-link id="create-device-button" :to="{ name: 'CreateDevice' }">
+                    <button>Add Device</button>
+                </router-link>
+                <router-link id="update-device-button" :to="{ name: 'UpdateDevice' }">
+                    <button>Update Device</button>
+                </router-link>
+                <router-link id="delete-device-button" :to="{ name: 'DeleteDevice' }">
+                    <button>Delete Device</button>
+                </router-link>
+            </div>
+
+        </section>
+
     </section>
 </template>
 
@@ -74,13 +91,17 @@ export default {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     text-align: center;
+    position: relative;
 }
 
 #model-info,
 #maintenance-info {
-    background-color: rgb(216, 216, 218);
+    background-color: #0f3358;
+    color: white;
+    border: none;
     border-radius: 5px;
     padding: 20px;
+    font-family: Tahoma, sans-serif;
 }
 
 #device-pic {
@@ -101,9 +122,12 @@ h2 {
     font-size: 25px;
 }
 
-h3 {
+#model-info h3,
+#maintenance-info h3 {
     font-family: Tahoma, sans-serif;
-    font-size: 17px;
+    font-size: 20px;
+    text-decoration-color: white;
+    text-decoration: underline;
 }
 
 #titles {
@@ -113,6 +137,25 @@ h3 {
 
 #device-details p {
     font-family: Arial, sans-serif;
-    font-size: 17px;  
+    font-size: 17px;
+}
+.technician-tools {
+  font-size: 15px;
+}
+
+.vertical-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.vertical-buttons button {
+  margin-bottom: 10px;
+}
+
+#edit-device-button-container {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
 }
 </style>

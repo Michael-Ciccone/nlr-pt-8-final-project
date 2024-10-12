@@ -5,6 +5,7 @@
             <h3>Select a department to anonymously browse the inventory. Please <router-link
                     v-bind:to="{ name: 'login' }">Login</router-link> to make any changes.</h3>
         </section>
+
         <ul id="departments-button-container">
             <li v-for="department in departments" :key="department.id">
                 <router-link id="department-button" :to="{ name: 'DeviceList', params: { departmentId: department.id } }">
@@ -13,6 +14,14 @@
 
             </li>
         </ul>
+
+        <section id="add-department-button-container">
+            <h3 class="technician-tools">Technician Tools:</h3>
+                <router-link id="create-department-button" :to="{ name: 'CreateDepartment' }">
+                    <button>Add Department</button>
+                </router-link>
+                
+        </section>
     </section>
 </template>
 
@@ -32,6 +41,11 @@ export default {
 </script>
 
 <style>
+
+#department-list {
+    position: relative;
+}
+
 #departments-button-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -88,4 +102,16 @@ h3 {
     text-align: center;
     margin-bottom: 20px;
 }
+
+.technician-tools {
+    font-size: 15px;
+}
+
+
+#add-department-button-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
 </style>

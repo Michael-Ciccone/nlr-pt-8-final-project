@@ -10,18 +10,6 @@
         <button>Asset {{ device.id }}</button>
       </li>
     </ul>
-    <section id="edit-department-button-container">
-      <h3 class="technician-tools">Technician Tools:</h3>
-      <div class="vertical-buttons">
-        <router-link id="update-department-button" :to="{ name: 'UpdateDepartment' }">
-          <button>Update Department</button>
-        </router-link>
-        <router-link id="delete-department-button" :to="{ name: 'DeleteDepartment' }">
-          <button>Delete Department</button>
-        </router-link>
-      </div>
-
-    </section>
   </section>
 </template>
 
@@ -56,9 +44,8 @@ export default {
 </script>
 
 <style>
-
 #device-list {
-    position: relative;
+  position: relative;
 }
 
 #devices-button-container {
@@ -111,25 +98,5 @@ h3 {
 #titles {
   text-align: center;
   margin-bottom: 20px;
-}
-
-.technician-tools {
-  font-size: 15px;
-}
-
-.vertical-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.vertical-buttons button {
-  margin-bottom: 10px;
-}
-
-#edit-department-button-container {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
 }
 </style>

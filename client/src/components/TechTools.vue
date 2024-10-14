@@ -1,17 +1,30 @@
 <template>
-    <section id="department-list">
+    <section id="tech-tools">
         <section id="titles">
-            <h2>Welcome to Your Local Healthcare Facility!</h2>
-            <h3>Select a department to anonymously browse the inventory. Please <router-link
-                    v-bind:to="{ name: 'login' }">Login</router-link> to make any changes.</h3>
+            <h2>Technician Tools</h2>
+            <h3>Please select an action to make changes to the system.</h3>
         </section>
 
-        <ul id="departments-button-container">
-            <li v-for="department in departments" :key="department.id">
-                <router-link id="department-button" :to="{ name: 'DeviceList', params: { departmentId: department.id } }">
-                    <button>{{ department.departmentName }}</button>
+        <ul id="tools-button-container">
+            <li>
+                <router-link id="edit-button" :to="{ name: 'CreateDepartment' }">
+                    <button>Create New Department</button>
                 </router-link>
-
+            </li>
+            <li>
+                <router-link id="edit-button" :to="{ name: 'CreateDevice' }">
+                    <button>Create New Technician</button>
+                </router-link>
+            </li>
+            <li>
+                <router-link id="edit-button" :to="{ name: 'UpdateDepartment' }">
+                    <button>Update Existing Department</button>
+                </router-link>
+            </li>
+            <li>
+                <router-link id="edit-button" :to="{ name: 'CreateDevice' }">
+                    <button>Update Existing Technician</button>
+                </router-link>
             </li>
         </ul>
     </section>
@@ -33,11 +46,8 @@ export default {
 </script>
 
 <style>
-#department-list {
-    position: relative;
-}
 
-#departments-button-container {
+#tools-button-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, auto);
@@ -48,12 +58,8 @@ export default {
     max-width: 70%;
 }
 
-.department-item {
-    display: flex;
-    justify-content: center;
-}
 
-#department-button button {
+#edit-button button {
     padding: 30px 40px;
     width: 100%;
     height: 150px;
@@ -71,11 +77,11 @@ export default {
     text-decoration: none;
 }
 
-#department-button button:hover {
+#edit-button button:hover {
     background-color: #0056b3;
 }
 
-#department-button {
+#edit-button {
     text-decoration: none;
 }
 
@@ -93,4 +99,5 @@ h3 {
     text-align: center;
     margin-bottom: 20px;
 }
+
 </style>

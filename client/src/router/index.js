@@ -10,6 +10,7 @@ import DevicesView from '../views/DevicesView.vue'
 import DeviceDetailsView from '../views/DeviceDetailsView.vue'
 import CreateDepartmentView from '../views/CreateDepartmentView.vue'
 import CreateDeviceView from '../views/CreateDeviceView.vue'
+import TechToolsView from '../views/TechToolsView.vue'
 
 
 /**
@@ -107,6 +108,30 @@ const routes = [
       path: '/devices/update',
       name: 'UpdateDevice',
       component: CreateDeviceView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/models/create',
+      name: 'CreateModel',
+      component: CreateDeviceView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/models/update',
+      name: 'UpdateModel',
+      component: CreateDeviceView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/tools',
+      name: 'TechTools',
+      component: TechToolsView,
       meta: {
         requiresAuth: true
       }

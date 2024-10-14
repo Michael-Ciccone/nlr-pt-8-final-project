@@ -14,8 +14,8 @@
         <router-link v-bind:to="{ name: 'home' }">
           <button>Contact Us</button>
         </router-link>
-        <router-link v-bind:to="{ name: 'home' }">
-          <button>Admin Tools</button>
+        <router-link v-bind:to="{ name: 'TechTools' }">
+          <button>Tech Tools</button>
         </router-link>
         <router-link v-bind:to="{ name: 'logout' }" v-if="this.$store.state.token">
           <button>Logout</button>

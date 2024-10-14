@@ -1,49 +1,21 @@
 <template>
+  <section id="full-page">
     <div id="create-device">
       <form v-on:submit.prevent="createDevice">
         <h1>Create Device</h1>
         <div id="fields">
           <label for="serialNumber">Serial Number</label>
-          <input
-            type="text"
-            id="serialNumber"
-            placeholder="Serial number..."
-            v-model="device.serialNumber"
-            required
-            autofocus
-          />
+          <input type="text" id="serialNumber" placeholder="Serial number..." v-model="device.serialNumber" required
+            autofocus />
           <label for="modelId">Model ID</label>
-          <input
-            type="text"
-            id="modelId"
-            placeholder="Model ID..."
-            v-model="device.modelId"
-            required
-          />
+          <input type="text" id="modelId" placeholder="Model ID..." v-model="device.modelId" required />
           <label for="owningDepartment">Owning Department</label>
-          <input
-            type="text"
-            id="owningDepartment"
-            placeholder="Owning department..."
-            v-model="device.owningDepartment"
-            required
-          />
+          <input type="text" id="owningDepartment" placeholder="Owning department..." v-model="device.owningDepartment"
+            required />
           <label for="installDate">Install Date</label>
-          <input
-            type="text"
-            id="installDate"
-            placeholder="Install date..."
-            v-model="device.installDate"
-            required
-          />
+          <input type="text" id="installDate" placeholder="Install date..." v-model="device.installDate" required />
           <label for="picture">Image URL</label>
-          <input
-            type="text"
-            id="picture"
-            placeholder="Image URL..."
-            v-model="device.picture"
-            required
-          />
+          <input type="text" id="picture" placeholder="Image URL..." v-model="device.picture" required />
           <div></div>
           <div>
             <button type="submit">Create Device</button>
@@ -52,25 +24,39 @@
         <hr />
       </form>
     </div>
-  </template>
+    <section id="edit-model-button-container">
+      <h3 class="technician-tools">Technician Tools:</h3>
+      <p>New or updated model?</p>
+      <div class="vertical-buttons">
+        <router-link id="create-model-button" :to="{ name: 'UpdateDepartment' }">
+          <button>Create New Model</button>
+        </router-link>
+        <router-link id="update-model-button" :to="{ name: 'DeleteDepartment' }">
+          <button>Update Existing Model</button>
+        </router-link>
+      </div>
+
+    </section>
+  </section>
+</template>
   
-  <script>
-  import ResourceService from '../services/ResourceService';
-  
-  export default {
-    data() {
-      return {
-        device: {
-    serialNumber: "",
-    modelId: null,
-    owningDepartment: null,
-    installDate: "",
-    pic: ""
+<script>
+import ResourceService from '../services/ResourceService';
+
+export default {
+  data() {
+    return {
+      device: {
+        serialNumber: "",
+        modelId: null,
+        owningDepartment: null,
+        installDate: "",
+        pic: ""
+      },
+    };
   },
-      };
-    },
-    methods: {
-        createDevice() {
+  methods: {
+    createDevice() {
       ResourceService.createDevice(this.device).then(() => {
         this.$router.push({ name: 'home' });
       }).catch((error) => {
@@ -78,11 +64,15 @@
       });
     }
   }
-  };
-  </script>
+};
+</script>
   
-  <style scoped>
-  #create-department {
+<style scoped>
+#full-page {
+  position: relative;
+}
+
+#create-device {
   max-width: 500px;
   margin: 80px auto;
   padding: 40px;
@@ -124,7 +114,7 @@ input:focus {
   outline: none;
 }
 
-button {
+#fields button {
   width: 100%;
   padding: 12px;
   background-color: #0775ec;
@@ -136,7 +126,8 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+button:hover,
+#fields button:hover {
   background-color: #0056b3;
 }
 
@@ -146,4 +137,24 @@ hr {
   background-color: #e1e1e1;
   margin: 20px 0;
 }
-  </style>
+
+.technician-tools {
+  font-size: 15px;
+}
+
+.vertical-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.vertical-buttons button {
+  margin-bottom: 10px;
+}
+
+#edit-model-button-container {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+</style>

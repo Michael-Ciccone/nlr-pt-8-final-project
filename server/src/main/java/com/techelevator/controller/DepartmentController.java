@@ -36,15 +36,20 @@ public class DepartmentController {
         return deviceDao.getDevicesByOwningDepartment(departmentId);
     }
 
+    @GetMapping(path = "/{id}")
+    public Department getDepartmentById(@PathVariable int id) {
+        return departmentDao.getDepartmentById(id);
+    }
 
-    @PreAuthorize("hasRole('ADMIN')")
+
+    @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public Department createDepartment(@Valid @RequestBody Department department) {
         return departmentDao.createDepartment(department);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("isAuthenticated()")
     @PutMapping(path = "/{id}")
     public Department updateDepartment(@Valid @RequestBody Department department, @PathVariable int id) {
 
@@ -58,7 +63,7 @@ public class DepartmentController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping(path = "/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("isAuthenticated()")
     public void deleteDepartment(@PathVariable int id) {
         departmentDao.deleteDepartmentById(id);
     }

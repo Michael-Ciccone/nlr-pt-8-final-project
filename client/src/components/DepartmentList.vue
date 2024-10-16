@@ -8,7 +8,7 @@
 
         <ul id="departments-button-container">
             <li v-for="department in departments" :key="department.id">
-                <router-link id="department-button" :to="{ name: 'DeviceList', params: { departmentId: department.id } }">
+                <router-link id="department-button" v-bind:to="{ name: 'DeviceList', params: { departmentId: department.id } }">
                     <button>{{ department.departmentName }}</button>
                 </router-link>
 
@@ -18,16 +18,12 @@
 </template>
 
 <script>
-import ResourceService from "../services/ResourceService";
 
 export default {
-    data() {
-        return {
-            departments: []
-        };
-    },
-    created() {
-        this.departments = ResourceService.getDepartments();
+    computed: {
+        departments() {
+            return this.$store.state.departments;
+        }
     }
 }
 </script>
@@ -35,6 +31,7 @@ export default {
 <style>
 #department-list {
     position: relative;
+    margin-bottom: 40px;
 }
 
 #departments-button-container {
@@ -92,5 +89,6 @@ h3 {
 #titles {
     text-align: center;
     margin-bottom: 20px;
+    margin-top:40px;
 }
 </style>

@@ -1,13 +1,26 @@
 import { createStore as _createStore } from 'vuex';
 import axios from 'axios';
+import ResourceService from '../services/ResourceService';
 
 export function createStore(currentToken, currentUser) {
   let store = _createStore({
     state: {
+      devices: [],
+      departments: [],
+      models: [],
       token: currentToken || '',
       user: currentUser || {},
     },
     mutations: {
+      SET_DEVICES(state, devices) {
+        state.devices = devices;
+      },
+      SET_DEPARTMENTS(state, departments) {
+        state.departments = departments;
+      },
+      SET_MODELS(state, models) {
+        state.models = models;
+      },
       SET_AUTH_TOKEN(state, token) {
         state.token = token;
         localStorage.setItem('token', token);
@@ -24,8 +37,7 @@ export function createStore(currentToken, currentUser) {
         state.user = {};
         axios.defaults.headers.common = {};
       }
-    },
-
+    }
   })
   return store;
 }

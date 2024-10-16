@@ -14,9 +14,6 @@
         <router-link v-bind:to="{ name: 'home' }">
           <button>Contact Us</button>
         </router-link>
-        <router-link v-bind:to="{ name: 'TechTools' }">
-          <button>Tech Tools</button>
-        </router-link>
         <router-link v-bind:to="{ name: 'logout' }" v-if="this.$store.state.token">
           <button>Logout</button>
         </router-link>
@@ -38,6 +35,7 @@
 </template>
 
 <script>
+import ResourceService from './services/ResourceService';
 
 export default {
   data() {
@@ -47,11 +45,16 @@ export default {
   },
   methods: {
     navigateToDevice() {
-      if (this.deviceId) {
-        this.$router.push({ name: 'DevicePage', query: { deviceId: this.deviceId } });
-      }
-    }
-}
+      ResourceService.getDeviceById(parseInt(this.deviceId)).then(response => {
+        
+          if (response && response.data) {
+            this.$router.push({ name: 'DevicePage', query: { deviceId: this.deviceId } });
+          } else {
+            this.$router.push({ name: 'Error' });
+          }
+        });
+    },
+  },
 }
 </script>
 
@@ -69,7 +72,7 @@ export default {
 
 h1 {
     font-family:Tahoma, sans-serif;
-    font-size: 40px;
+    font-size: 45px;
     flex-grow: 2;
     margin-left: auto;
   }
@@ -106,7 +109,7 @@ main {
 
 button {
   background-color: #0775ec;
-  width: 120px;
+  width: 140px;
   border-radius: 5px;
   text-align: center;
   line-height: 50px;

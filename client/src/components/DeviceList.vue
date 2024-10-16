@@ -10,29 +10,33 @@
         <button>Asset {{ device.id }}</button>
       </li>
     </ul>
+    <section id="edit-device-button-container">
+      <h3 class="technician-tools">Technician Tools:</h3>
+      <div class="vertical-buttons">
+        <router-link id="create-department-button" :to="{ name: 'CreateDepartment' }">
+          <button>Create New Department</button>
+        </router-link>
+        <router-link id="update-department-button" :to="{ name: 'UpdateDepartment' }">
+          <button>Update Current Department</button>
+        </router-link>
+      </div>
+
+    </section>
   </section>
 </template>
 
 <script>
-import ResourceService from "../services/ResourceService";
 
 export default {
-  data() {
-    return {
-      devices: [],
-      departmentName: ''
-    };
+  props: {
+    departmentName: {
+      type: String,
+      required: true
+    },
   },
-  created() {
-    try {
-      const departmentId = parseInt(this.$route.params.departmentId);
-      const department = ResourceService.getDepartmentById(departmentId);
-
-      this.departmentName = department.departmentName;
-
-      this.devices = ResourceService.getDevicesByDepartment(departmentId);
-    } catch (error) {
-      console.error("Error fetching department or devices:", error);
+  computed: {
+    devices() {
+      return this.$store.state.devices;
     }
   },
   methods: {
@@ -56,7 +60,7 @@ export default {
   list-style-type: none;
   padding: 0;
   margin: 0 auto;
-  max-width: 70%;
+  max-width: 60%;
 }
 
 .department-item {

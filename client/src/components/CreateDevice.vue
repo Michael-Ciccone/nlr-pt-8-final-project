@@ -24,19 +24,6 @@
         <hr />
       </form>
     </div>
-    <section id="edit-model-button-container">
-      <h3 class="technician-tools">Technician Tools:</h3>
-      <p>New or updated model?</p>
-      <div class="vertical-buttons">
-        <router-link id="create-model-button" :to="{ name: 'UpdateDepartment' }">
-          <button>Create New Model</button>
-        </router-link>
-        <router-link id="update-model-button" :to="{ name: 'DeleteDepartment' }">
-          <button>Update Existing Model</button>
-        </router-link>
-      </div>
-
-    </section>
   </section>
 </template>
   
@@ -136,25 +123,5 @@ hr {
   height: 1px;
   background-color: #e1e1e1;
   margin: 20px 0;
-}
-
-.technician-tools {
-  font-size: 15px;
-}
-
-.vertical-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.vertical-buttons button {
-  margin-bottom: 10px;
-}
-
-#edit-model-button-container {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
 }
 </style>

@@ -10,7 +10,8 @@ import DevicesView from '../views/DevicesView.vue'
 import DeviceDetailsView from '../views/DeviceDetailsView.vue'
 import CreateDepartmentView from '../views/CreateDepartmentView.vue'
 import CreateDeviceView from '../views/CreateDeviceView.vue'
-import TechToolsView from '../views/TechToolsView.vue'
+import CreateModelView from '../views/CreateModelView.vue'
+import ErrorView from '../views/ErrorView.vue'
 
 
 /**
@@ -57,12 +58,26 @@ const routes = [
     {
       path: '/devices/:departmentId',
       name: 'DeviceList',
-      component: DevicesView
+      component: DevicesView,
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/device',
       name: 'DevicePage',
-      component: DeviceDetailsView
+      component: DeviceDetailsView,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/error',
+      name: 'Error',
+      component: ErrorView,
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/departments/create',
@@ -115,7 +130,7 @@ const routes = [
     {
       path: '/models/create',
       name: 'CreateModel',
-      component: CreateDeviceView,
+      component: CreateModelView,
       meta: {
         requiresAuth: true
       }
@@ -124,14 +139,6 @@ const routes = [
       path: '/models/update',
       name: 'UpdateModel',
       component: CreateDeviceView,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/tools',
-      name: 'TechTools',
-      component: TechToolsView,
       meta: {
         requiresAuth: true
       }

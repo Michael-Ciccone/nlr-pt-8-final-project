@@ -30,13 +30,20 @@
             <h3 class="technician-tools">Technician Tools:</h3>
             <div class="vertical-buttons">
                 <router-link id="create-device-button" :to="{ name: 'CreateDevice' }">
-                    <button>Add Device</button>
+                    <button>Create New Device</button>
                 </router-link>
                 <router-link id="update-device-button" :to="{ name: 'UpdateDevice' }">
-                    <button>Update Device</button>
+                    <button>Update Current Device</button>
                 </router-link>
                 <router-link id="delete-device-button" :to="{ name: 'DeleteDevice' }">
-                    <button>Delete Device</button>
+                    <button>Delete Current Device</button>
+                </router-link>
+                <p>New or updated model?</p>
+                <router-link id="create-model-button" :to="{ name: 'CreateModel' }">
+                    <button>Create New Model</button>
+                </router-link>
+                <router-link id="update-model-button" :to="{ name: 'DeleteDepartment' }">
+                    <button>Update Current Model</button>
                 </router-link>
             </div>
 
@@ -113,7 +120,7 @@ export default {
 
 #device-pic img {
     width: auto;
-    height: 400px;
+    height: 500px;
     border-radius: 10px;
 }
 
@@ -139,23 +146,29 @@ h2 {
     font-family: Arial, sans-serif;
     font-size: 17px;
 }
+
 .technician-tools {
-  font-size: 15px;
+    font-size: 15px;
 }
 
 .vertical-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .vertical-buttons button {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 
 #edit-device-button-container {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+}
+#edit-device-button-container h3 {
+    font-family: Tahoma, sans-serif;
+    font-size: 20px;
 }
 </style>

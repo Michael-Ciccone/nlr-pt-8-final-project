@@ -93,21 +93,21 @@ insert into department (department_name, base_maintenance_month, assigned_techni
 insert into department (department_name, base_maintenance_month, assigned_technician) values ('Cardiology', 5, 'Tamarra Clemas');
 insert into department (department_name, base_maintenance_month, assigned_technician) values ('Sports Medicine', 7, 'Mart Nelmes');
 
-insert into device (serial_number, model_id, owning_department, install_date, picture) values ('7ed2a', 4, 9, '2002-08-05', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
-insert into device (serial_number, model_id, owning_department, install_date, picture) values ('708d2a1', 3, 9, '2018-11-23', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
-insert into device (serial_number, model_id, owning_department, install_date, picture) values ('3a379ea078efce', 3, 2, '2014-01-21', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
-insert into device (serial_number, model_id, owning_department, install_date, picture) values ('0f620cc45', 5, 2, '2001-06-04', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
+insert into device (serial_number, model_id, owning_department, install_date, picture) values ('7ed2a', 4, 9, '2002-08-05', 'EMBIM50.jpg');
+insert into device (serial_number, model_id, owning_department, install_date, picture) values ('708d2a1', 3, 9, '2018-11-23', 'Mobile-DR-Series500x500.png');
+insert into device (serial_number, model_id, owning_department, install_date, picture) values ('3a379ea078efce', 3, 2, '2014-01-21', 'Mobile-DR-Series500x500.png');
+insert into device (serial_number, model_id, owning_department, install_date, picture) values ('0f620cc45', 5, 2, '2001-06-04', 'A5-with-N17-753x1024-753x1024-1.jpg');
 insert into device (serial_number, model_id, owning_department, install_date, picture) values ('32751f8b', 1, 8, '2021-01-05', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
-insert into device (serial_number, model_id, owning_department, install_date, picture) values ('5ae7a3eb1cb5', 9, 7, '2011-04-18', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
+insert into device (serial_number, model_id, owning_department, install_date, picture) values ('5ae7a3eb1cb5', 9, 7, '2011-04-18', 'EMBIM50.jpg');
 insert into device (serial_number, model_id, owning_department, install_date, picture) values ('4fc38d8', 6, 10, '2006-10-01', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
-insert into device (serial_number, model_id, owning_department, install_date, picture) values ('ad7ccffd89699', 10, 10, '2020-06-01', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
-insert into device (serial_number, model_id, owning_department, install_date, picture) values ('9a9859e4812', 2, 4, '2009-06-13', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
+insert into device (serial_number, model_id, owning_department, install_date, picture) values ('ad7ccffd89699', 10, 10, '2020-06-01', 'A5-with-N17-753x1024-753x1024-1.jpg');
+insert into device (serial_number, model_id, owning_department, install_date, picture) values ('9a9859e4812', 2, 4, '2009-06-13', 'Medfusion_4000_pump_larger.png');
 insert into device (serial_number, model_id, owning_department, install_date, picture) values ('57d2893', 1, 1, '2001-06-16', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
 insert into device (serial_number, model_id, owning_department, install_date, picture) values ('ca3cc6a2bb', 6, 5, '2021-03-20', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
-insert into device (serial_number, model_id, owning_department, install_date, picture) values ('268564a', 9, 6, '2009-09-14', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
-insert into device (serial_number, model_id, owning_department, install_date, picture) values ('b7a68da1', 2, 5, '2020-02-15', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
-insert into device (serial_number, model_id, owning_department, install_date, picture) values ('b0c4491a', 9, 4, '2022-04-28', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
-insert into device (serial_number, model_id, owning_department, install_date, picture) values ('33e94', 10, 3, '2007-11-29', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg');
+insert into device (serial_number, model_id, owning_department, install_date, picture) values ('268564a', 9, 6, '2009-09-14', 'EMBIM50.jpg');
+insert into device (serial_number, model_id, owning_department, install_date, picture) values ('b7a68da1', 2, 5, '2020-02-15', 'Medfusion_4000_pump_larger.png');
+insert into device (serial_number, model_id, owning_department, install_date, picture) values ('b0c4491a', 9, 4, '2022-04-28', 'EMBIM50.jpg');
+insert into device (serial_number, model_id, owning_department, install_date, picture) values ('33e94', 10, 3, '2007-11-29', 'A5-with-N17-753x1024-753x1024-1.jpg');
 
 
 -- Users

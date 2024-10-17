@@ -4,26 +4,26 @@
         <h3>Please <router-link v-bind:to="{ name: 'login' }">Login</router-link> to make any changes.</h3>
     </section>
     <section id="device-details">
-        <section id="model-info" v-if="device">
+        <section id="model-info" v-if="device && model && department">
             <h3>Model Information</h3>
             <p><strong>Device ID:</strong> {{ device.id }}</p>
-            <p><strong>Manufacturer:</strong> {{ model?.manufacturerName }}</p>
-            <p><strong>Model:</strong> {{ model?.modelName }}</p>
-            <p><strong>Description:</strong> {{ model?.description }}</p>
+            <p><strong>Manufacturer:</strong> {{ model.manufacturerName }}</p>
+            <p><strong>Model:</strong> {{ model.modelName }}</p>
+            <p><strong>Description:</strong> {{ model.description }}</p>
             <p><strong>Serial Number:</strong> {{ device.serialNumber }}</p>
         </section>
 
         <section id="maintenance-info" v-if="device">
             <h3>Maintenance Information</h3>
-            <p><strong>Owning Department:</strong> {{ dept?.departmentName }}</p>
-            <p><strong>Maintenance Month:</strong> {{ dept?.maintenanceMonth }}</p>
-            <p><strong>Maintenance Schedule:</strong> {{ model?.maintenanceSchedule }}</p>
-            <p><strong>Assigned Technician:</strong> {{ dept?.assignedTechnician }}</p>
+            <p><strong>Owning Department:</strong> {{ department.departmentName }}</p>
+            <p><strong>Maintenance Month:</strong> {{ department.maintenanceMonth }}</p>
+            <p><strong>Maintenance Schedule:</strong> {{ model.maintenanceSchedule }}</p>
+            <p><strong>Assigned Technician:</strong> {{ department.assignedTechnician }}</p>
             <p><strong>Install Date:</strong> {{ device.installDate }}</p>
         </section>
 
         <section id="device-pic" v-if="device">
-            <img :src="'img/' + device.pic" alt="Device Picture">
+            <img :src="`/img/${device.picture}`" alt="Device Picture">
         </section>
 
         <section id="edit-device-button-container">
@@ -56,38 +56,17 @@
 import ResourceService from "../services/ResourceService";
 
 export default {
-    data() {
-        return {
-            device: null,
-            model: null,
-            dept: null,
-        };
-    },
-    methods: {
-        handleDeviceInfo() {
-
-            const deviceId = this.$route.query.deviceId;
-
-            console.log('deviceId:', deviceId);
-
-            if (deviceId) {
-                const devices = ResourceService.getDevices();
-                const models = ResourceService.getModels();
-                const departments = ResourceService.getDepartments();
-
-                this.device = devices.find(device => device.id === parseInt(deviceId));
-                this.model = models.find(model => model.id === this.device?.modelId);
-                this.dept = departments.find(department => department.id === this.device?.owningDepartment);
-
-            }
+    computed: {
+        department() {
+            return this.$store.state.department;
+        },
+        device() {
+            return this.$store.state.device;
+        },
+        model() {
+            return this.$store.state.model;
         }
     },
-    created() {
-        this.handleDeviceInfo();
-    },
-    watch: {
-        '$route.query.deviceId': 'handleDeviceInfo'
-    }
 
 }
 </script>
@@ -167,6 +146,7 @@ h2 {
     bottom: 50px;
     left: 20px;
 }
+
 #edit-device-button-container h3 {
     font-family: Tahoma, sans-serif;
     font-size: 20px;

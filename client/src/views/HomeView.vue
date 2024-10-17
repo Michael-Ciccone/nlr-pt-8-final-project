@@ -15,6 +15,9 @@ export default {
         ResourceService.getDepartments().then( (response) => {
             this.$store.commit("SET_DEPARTMENTS", response.data);
         });
+        ResourceService.getModels().then( (response) => {
+            this.$store.commit("SET_MODELS", response.data);
+        });
     }
 }
 </script>

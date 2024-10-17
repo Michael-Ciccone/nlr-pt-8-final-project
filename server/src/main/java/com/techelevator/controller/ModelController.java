@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.ModelDao;
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Device;
 import com.techelevator.model.Model;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,10 @@ public class ModelController {
     @GetMapping
     public List<Model> getAllModels() {
         return modelDao.getAllModels();
+    }
+    @GetMapping(path = "/{id}")
+    public Model getModelById(@PathVariable int id) {
+        return modelDao.getModelById(id);
     }
 
     @PreAuthorize("isAuthenticated()")

@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     navigateToDevice(deviceId) {
-      this.$router.push({ name: 'DevicePage', query: { deviceId } });
+      this.$router.push({ name: 'DevicePage', params: { deviceId } });
     }
   }
 }

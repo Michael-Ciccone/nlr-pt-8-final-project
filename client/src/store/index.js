@@ -1,13 +1,15 @@
 import { createStore as _createStore } from 'vuex';
 import axios from 'axios';
-import ResourceService from '../services/ResourceService';
 
 export function createStore(currentToken, currentUser) {
   let store = _createStore({
     state: {
       devices: [],
+      device: null,
       departments: [],
+      department: null,
       models: [],
+      model: null,
       token: currentToken || '',
       user: currentUser || {},
     },
@@ -15,11 +17,20 @@ export function createStore(currentToken, currentUser) {
       SET_DEVICES(state, devices) {
         state.devices = devices;
       },
+      SET_DEVICE(state, device) {
+        state.device = device;
+      },
       SET_DEPARTMENTS(state, departments) {
         state.departments = departments;
       },
+      SET_DEPARTMENT(state, department) {
+        state.department = department;
+      },
       SET_MODELS(state, models) {
         state.models = models;
+      },
+      SET_MODEL(state, model) {
+        state.model = model;
       },
       SET_AUTH_TOKEN(state, token) {
         state.token = token;

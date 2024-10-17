@@ -194,6 +194,9 @@ const ResourceService = {
   getDepartmentById(departmentId) {
     return axios.get(`/departments/${departmentId}`);
   },
+  getModelById(modelId) {
+    return axios.get(`/models/${modelId}`);
+  },
   getDevicesByDepartment(departmentId) {
     return axios.get(`/departments/${departmentId}/devices`);
   },

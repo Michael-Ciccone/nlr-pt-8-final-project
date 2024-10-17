@@ -64,7 +64,7 @@ const routes = [
       }
     },
     {
-      path: '/device',
+      path: '/device/:deviceId',
       name: 'DevicePage',
       component: DeviceDetailsView,
       meta: {

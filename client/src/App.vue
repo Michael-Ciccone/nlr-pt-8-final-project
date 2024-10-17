@@ -1,7 +1,7 @@
 <template>
   <div id="medical-app">
     <header>
-      <img id="logo" src="img\Health-Medical-Logo-design-on-transparent-background-PNG.png" alt="Generic Medical Logo">
+      <img id="logo" src="img/Health-Medical-Logo-design-on-transparent-background-PNG.png" alt="Generic Medical Logo">
     <h1>Medical Device Inventory</h1>
     <nav id="navigation">
       <div class="button-container">
@@ -45,10 +45,11 @@ export default {
   },
   methods: {
     navigateToDevice() {
-      ResourceService.getDeviceById(parseInt(this.deviceId)).then(response => {
+      const deviceId = parseInt(this.deviceId);
+      ResourceService.getDeviceById(deviceId).then(response => {
         
           if (response && response.data) {
-            this.$router.push({ name: 'DevicePage', query: { deviceId: this.deviceId } });
+            this.$router.push({ name: 'DevicePage', params: { deviceId } });
           } else {
             this.$router.push({ name: 'Error' });
           }

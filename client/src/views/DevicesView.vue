@@ -1,6 +1,6 @@
 <template>
   <div class="devices">
-    <device-list :departmentName="departmentName"/>
+    <device-list :departmentName="departmentName" />
   </div>
 </template>
   

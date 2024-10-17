@@ -8,7 +8,8 @@
 
         <ul id="departments-button-container">
             <li v-for="department in departments" :key="department.id">
-                <router-link id="department-button" v-bind:to="{ name: 'DeviceList', params: { departmentId: department.id } }">
+                <router-link id="department-button"
+                    v-bind:to="{ name: 'DeviceList', params: { departmentId: department.id } }">
                     <button>{{ department.departmentName }}</button>
                 </router-link>
 
@@ -89,6 +90,6 @@ h3 {
 #titles {
     text-align: center;
     margin-bottom: 20px;
-    margin-top:40px;
+    margin-top: 40px;
 }
 </style>

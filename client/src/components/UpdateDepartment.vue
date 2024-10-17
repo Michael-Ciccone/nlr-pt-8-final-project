@@ -1,7 +1,7 @@
 <template>
-  <div id="create-department">
-    <form v-on:submit.prevent="createDepartment">
-      <h1>Create Department</h1>
+  <div id="update-department">
+    <form v-on:submit.prevent="updateDepartment">
+      <h1>Update Department</h1>
       <div id="fields">
         <label for="departmentName">Department Name</label>
         <input type="text" id="departmentName" placeholder="Department name..." v-model="department.departmentName"
@@ -14,7 +14,7 @@
           v-model="department.assignedTechnician" required />
         <div></div>
         <div>
-          <button type="submit">Create Department</button>
+          <button type="submit">Update Department</button>
         </div>
       </div>
       <hr />
@@ -22,7 +22,7 @@
     </form>
   </div>
 </template>
-  
+    
 <script>
 import ResourceService from '../services/ResourceService';
 
@@ -37,27 +37,37 @@ export default {
       message: ""
     };
   },
+  created() {
+    this.getDepartmentInfo();
+  },
   methods: {
-    createDepartment() {
-      ResourceService.createDepartment(this.department).then((response) => {
+    getDepartmentInfo() {
+      const departmentId = this.$route.params.departmentId;
+      ResourceService.getDepartmentById(departmentId).then((response) => {
+        this.department = response.data;
+      });
+    },
+    updateDepartment() {
+      const departmentId = this.$route.params.departmentId;
+      ResourceService.updateDepartmentById(departmentId, this.department).then((response) => {
 
-        const newDepartment = response.data;
-        this.$store.commit('ADD_DEPARTMENT', newDepartment);
+        const updatedDepartment = response.data;
+        this.$store.commit('UPDATE_DEPARTMENT', updatedDepartment);
 
-        this.message = "Item successfully created... returning home";
+        this.message = "Item successfully updated... returning home";
         setTimeout(() => {
           this.$router.push({ name: 'home' });
         }, 3000);
       }).catch(() => {
-        this.message = "Failed to create the item. Please try again.";
+        this.message = "Failed to update the item. Please try again.";
       })
     }
   }
 };
 </script>
-  
+    
 <style scoped>
-#create-department {
+#update-department {
   max-width: 500px;
   margin: 80px auto;
   padding: 40px;

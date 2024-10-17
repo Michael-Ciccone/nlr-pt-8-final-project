@@ -22,6 +22,7 @@
           </div>
         </div>
         <hr />
+        <p v-if="message">{{ message }}</p>
       </form>
     </div>
   </section>
@@ -38,17 +39,25 @@ export default {
         modelId: null,
         owningDepartment: null,
         installDate: "",
-        pic: ""
+        picture: ""
       },
+      message: ""
     };
   },
   methods: {
     createDevice() {
-      ResourceService.createDevice(this.device).then(() => {
-        this.$router.push({ name: 'home' });
-      }).catch((error) => {
-        console.error('Failed to create device:', error);
-      });
+      ResourceService.createDevice(this.device).then((response) => {
+
+        const newDevice = response.data;
+        this.$store.commit('ADD_DEVICE', newDevice);
+
+        this.message = "Item successfully created... redirecting to device page";
+        setTimeout(() => {
+          this.$router.push({ name: 'DevicePage', params: { deviceId: newDevice.id } });
+        }, 3000);
+      }).catch(() => {
+        this.message = "Failed to create the item. Please try again.";
+      })
     }
   }
 };

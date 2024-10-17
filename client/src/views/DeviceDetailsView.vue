@@ -32,21 +32,14 @@ export default {
             const departmentMatch = departments.find(department => department.id === device.owningDepartment);
             if (departmentMatch) {
               this.$store.commit("SET_DEPARTMENT", departmentMatch);
-            } else {
-              console.warn(`No department found for ID: ${device.owningDepartment}`);
             }
 
             const modelMatch = models.find(model => model.id === device.modelId);
             if (modelMatch) {
               this.$store.commit("SET_MODEL", modelMatch);
-            } else {
-              console.warn(`No model found for ID: ${device.modelId}`);
             }
 
-          })
-            .catch(error => {
-              console.error("Error fetching device information:", error);
-            });
+          });
         }
       } catch (error) {
         console.error("Error in handleDeviceInfo method:", error);

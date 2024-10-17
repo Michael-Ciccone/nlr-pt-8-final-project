@@ -9,7 +9,9 @@ import RegisterView from '../views/RegisterView.vue'
 import DevicesView from '../views/DevicesView.vue'
 import DeviceDetailsView from '../views/DeviceDetailsView.vue'
 import CreateDepartmentView from '../views/CreateDepartmentView.vue'
+import UpdateDepartmentView from '../views/UpdateDepartmentView.vue'
 import CreateDeviceView from '../views/CreateDeviceView.vue'
+import UpdateDeviceView from '../views/UpdateDeviceView.vue'
 import CreateModelView from '../views/CreateModelView.vue'
 import ErrorView from '../views/ErrorView.vue'
 
@@ -23,127 +25,111 @@ import ErrorView from '../views/ErrorView.vue'
  * If they have (or don't need to) they're allowed to go about their way.
  */
 const routes = [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/login",
-      name: "login",
-      component: LoginView,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/logout",
-      name: "logout",
-      component: LogoutView,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/register",
-      name: "register",
-      component: RegisterView,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: '/devices/:departmentId',
-      name: 'DeviceList',
-      component: DevicesView,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: '/device/:deviceId',
-      name: 'DevicePage',
-      component: DeviceDetailsView,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: '/error',
-      name: 'Error',
-      component: ErrorView,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: '/departments/create',
-      name: 'CreateDepartment',
-      component: CreateDepartmentView,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/departments/delete',
-      name: 'DeleteDepartment',
-      component: CreateDepartmentView,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/departments/update',
-      name: 'UpdateDepartment',
-      component: CreateDepartmentView,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/devices/create',
-      name: 'CreateDevice',
-      component: CreateDeviceView,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/devices/delete',
-      name: 'DeleteDevice',
-      component: CreateDeviceView,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/devices/update',
-      name: 'UpdateDevice',
-      component: CreateDeviceView,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/models/create',
-      name: 'CreateModel',
-      component: CreateModelView,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/models/update',
-      name: 'UpdateModel',
-      component: CreateDeviceView,
-      meta: {
-        requiresAuth: true
-      }
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView,
+    meta: {
+      requiresAuth: false
     }
-  ];
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: LoginView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/logout",
+    name: "logout",
+    component: LogoutView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: RegisterView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/devices/:departmentId',
+    name: 'DeviceList',
+    component: DevicesView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/device/:deviceId',
+    name: 'DevicePage',
+    component: DeviceDetailsView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/error',
+    name: 'Error',
+    component: ErrorView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/departments/create',
+    name: 'CreateDepartment',
+    component: CreateDepartmentView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/department/update/:departmentId',
+    name: 'UpdateDepartment',
+    component: UpdateDepartmentView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/devices/create',
+    name: 'CreateDevice',
+    component: CreateDeviceView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/device/update/:deviceId',
+    name: 'UpdateDevice',
+    component: UpdateDeviceView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/models/create',
+    name: 'CreateModel',
+    component: CreateModelView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/models/update',
+    name: 'UpdateModel',
+    component: CreateDeviceView,
+    meta: {
+      requiresAuth: true
+    }
+  }
+];
 
 // Create the router
 const router = createRouter({
@@ -161,7 +147,7 @@ router.beforeEach((to) => {
 
   // If it does and they are not logged in, send the user to "/login"
   if (requiresAuth && store.state.token === '') {
-    return {name: "login"};
+    return { name: "login" };
   }
   // Otherwise, do nothing and they'll go to their next destination
 });

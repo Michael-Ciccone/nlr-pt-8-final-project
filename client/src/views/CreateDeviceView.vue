@@ -1,17 +1,15 @@
 <template>
-    <div class="create-device">
-      <create-device />
-    </div>
-  </template>
+  <div class="create-device">
+    <create-device />
+  </div>
+</template>
   
-  <script>
-  import CreateDevice from '../components/CreateDevice.vue';
+<script>
+import CreateDevice from '../components/CreateDevice.vue';
+
+export default {
+  components: { CreateDevice },
+}
+</script>
   
-  export default {
-    components: { CreateDevice },
-  }
-  </script>
-  
-  <style>
-  
-  </style>
+<style></style>

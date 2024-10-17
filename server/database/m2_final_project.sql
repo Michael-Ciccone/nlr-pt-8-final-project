@@ -107,7 +107,37 @@ insert into device (serial_number, model_id, owning_department, install_date, pi
 insert into device (serial_number, model_id, owning_department, install_date, picture) values ('268564a', 9, 6, '2009-09-14', 'EMBIM50.jpg');
 insert into device (serial_number, model_id, owning_department, install_date, picture) values ('b7a68da1', 2, 5, '2020-02-15', 'Medfusion_4000_pump_larger.png');
 insert into device (serial_number, model_id, owning_department, install_date, picture) values ('b0c4491a', 9, 4, '2022-04-28', 'EMBIM50.jpg');
-insert into device (serial_number, model_id, owning_department, install_date, picture) values ('33e94', 10, 3, '2007-11-29', 'A5-with-N17-753x1024-753x1024-1.jpg');
+insert into device (serial_number, model_id, owning_department, install_date, picture) values ('33e94', 10, 3, '2007-11-29', 'A5-with-N17-753x1024-753x1024-1.jpg'),
+('ae218', 5, 9, '2012-02-10', 'A5-with-N17-753x1024-753x1024-1.jpg'),
+('55187', 5, 5, '2018-08-20', 'A5-with-N17-753x1024-753x1024-1.jpg'),
+('92caf', 10, 4, '2016-02-26', 'A5-with-N17-753x1024-753x1024-1.jpg'),
+('0ba16', 5, 2, '2017-12-19', 'A5-with-N17-753x1024-753x1024-1.jpg'),
+('ed2f0', 7, 3, '2019-09-13', 'Medfusion_4000_pump_larger.png'),
+('45c87', 9, 2, '2013-10-05', 'EMBIM50.jpg'),
+('22392', 2, 10, '2006-09-11', 'Medfusion_4000_pump_larger.png'),
+('75d53', 4, 6, '2020-12-12', 'EMBIM50.jpg'),
+('3962f', 4, 6, '2001-02-16', 'EMBIM50.jpg'),
+('ea33d', 6, 1, '2006-09-03', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg'),
+('3749c', 6, 5, '2004-04-08', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg'),
+('a28a2', 2, 8, '2003-12-04', 'Medfusion_4000_pump_larger.png'),
+('2d7d7', 10, 10, '2011-03-03', 'A5-with-N17-753x1024-753x1024-1.jpg'),
+('c058e', 3, 2, '2010-08-17', 'Mobile-DR-Series500x500.png'),
+('cecee', 8, 6, '2005-01-15', 'Mobile-DR-Series500x500.png'),
+('a239d', 5, 9, '2018-04-28', 'A5-with-N17-753x1024-753x1024-1.jpg'),
+('1693a', 6, 4, '2024-11-16', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg'),
+('0f780', 10, 5, '2014-05-28', 'A5-with-N17-753x1024-753x1024-1.jpg'),
+('58c74', 5, 1, '2001-09-05', 'A5-with-N17-753x1024-753x1024-1.jpg'),
+('044f2', 4, 5, '2010-10-28', 'EMBIM50.jpg'),
+('e4460', 8, 6, '2011-12-09', 'Mobile-DR-Series500x500.png'),
+('be7c2', 7, 9, '2006-02-04', 'Medfusion_4000_pump_larger.png'),
+('73cfe', 5, 8, '2003-04-20', 'A5-with-N17-753x1024-753x1024-1.jpg'),
+('d7b44', 3, 1, '2016-02-25', 'Mobile-DR-Series500x500.png'),
+('cae20', 7, 7, '2007-07-08', 'Medfusion_4000_pump_larger.png'),
+('f5c12', 10, 8, '2007-11-29', 'A5-with-N17-753x1024-753x1024-1.jpg'),
+('dd5b9', 10, 3, '2009-11-06', 'A5-with-N17-753x1024-753x1024-1.jpg'),
+('12ece', 1, 8, '2018-04-10', 'medical-artificial-lung-ventilator-GqD1Y89-600.jpg'),
+('f29e5', 8, 8, '2004-06-13', 'Mobile-DR-Series500x500.png'),
+('94739', 3, 2, '2021-11-01', 'Mobile-DR-Series500x500.png');
 
 
 -- Users

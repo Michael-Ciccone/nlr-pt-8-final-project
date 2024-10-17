@@ -20,11 +20,35 @@ export function createStore(currentToken, currentUser) {
       SET_DEVICE(state, device) {
         state.device = device;
       },
+      ADD_DEVICE(state, device) {
+        state.departments.push(device);
+      },
+      UPDATE_DEVICE(state, updatedDevice) {
+        const index = state.devices.findIndex(device => device.id === updatedDevice.id);
+        if (index !== -1) {
+          state.devices.splice(index, 1, updatedDevice);
+        }
+      },
+      DELETE_DEVICE(state, deviceId) {
+        state.devices = state.devices.filter(device => device.id !== deviceId);
+      },
       SET_DEPARTMENTS(state, departments) {
         state.departments = departments;
       },
       SET_DEPARTMENT(state, department) {
         state.department = department;
+      },
+      ADD_DEPARTMENT(state, department) {
+        state.departments.push(department);
+      },
+      UPDATE_DEPARTMENT(state, updatedDepartment) {
+        const index = state.departments.findIndex(department => department.id === updatedDepartment.id);
+        if (index !== -1) {
+          state.departments.splice(index, 1, updatedDepartment);
+        }
+      },
+      DELETE_DEPARTMENT(state, departmentId) {
+        state.departments = state.departments.filter(department => department.id !== departmentId);
       },
       SET_MODELS(state, models) {
         state.models = models;

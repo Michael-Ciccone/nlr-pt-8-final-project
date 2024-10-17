@@ -19,6 +19,8 @@
         <router-link id="update-department-button" :to="{ name: 'UpdateDepartment' }">
           <button>Update Current Department</button>
         </router-link>
+        <button @click="deleteDepartment">Delete Current Department</button>
+        <p v-if="message">{{ message }}</p>
       </div>
 
     </section>
@@ -26,8 +28,15 @@
 </template>
 
 <script>
+import ResourceService from '../services/ResourceService';
 
 export default {
+  data() {
+    return {
+      departmentId: null,
+      message: ""
+    };
+  },
   props: {
     departmentName: {
       type: String,
@@ -42,6 +51,19 @@ export default {
   methods: {
     navigateToDevice(deviceId) {
       this.$router.push({ name: 'DevicePage', params: { deviceId } });
+    },
+    deleteDepartment() {
+
+      this.departmentId = this.$route.params.departmentId;
+      ResourceService.deleteDepartmentById(this.departmentId).then(() => {
+        this.$store.commit('DELETE_DEPARTMENT', this.departmentId);
+        this.message = "Item successfully deleted... returning home";
+        setTimeout(() => {
+          this.$router.push({ name: 'home' });
+        }, 3000);
+      }).catch(() => {
+        this.message = "Failed to delete the item. Please try again.";
+      })
     }
   }
 }

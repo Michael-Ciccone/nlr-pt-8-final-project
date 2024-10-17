@@ -9,7 +9,7 @@
             <p><strong>Device ID:</strong> {{ device.id }}</p>
             <p><strong>Manufacturer:</strong> {{ model.manufacturerName }}</p>
             <p><strong>Model:</strong> {{ model.modelName }}</p>
-            <p><strong>Description:</strong> {{ model.description }}</p>
+            <p><strong>Description:</strong> {{ model.modelDescription }}</p>
             <p><strong>Serial Number:</strong> {{ device.serialNumber }}</p>
         </section>
 
@@ -35,14 +35,13 @@
                 <router-link id="update-device-button" :to="{ name: 'UpdateDevice' }">
                     <button>Update Current Device</button>
                 </router-link>
-                <router-link id="delete-device-button" :to="{ name: 'DeleteDevice' }">
-                    <button>Delete Current Device</button>
-                </router-link>
+                <button @click="deleteDevice">Delete Current Device</button>
+                <p v-if="message">{{ message }}</p>
                 <p>New or updated model?</p>
                 <router-link id="create-model-button" :to="{ name: 'CreateModel' }">
                     <button>Create New Model</button>
                 </router-link>
-                <router-link id="update-model-button" :to="{ name: 'DeleteDepartment' }">
+                <router-link id="update-model-button" :to="{ name: 'CreateModel' }">
                     <button>Update Current Model</button>
                 </router-link>
             </div>
@@ -56,6 +55,12 @@
 import ResourceService from "../services/ResourceService";
 
 export default {
+    data() {
+        return {
+            deviceId: null,
+            message: ""
+        };
+    },
     computed: {
         department() {
             return this.$store.state.department;
@@ -67,7 +72,22 @@ export default {
             return this.$store.state.model;
         }
     },
+    methods: {
 
+        deleteDevice() {
+
+            this.deviceId = this.$route.params.deviceId;
+            ResourceService.deleteDeviceById(this.deviceId).then(() => {
+                this.$store.commit('DELETE_DEVICE', this.deviceId);
+                this.message = "Item successfully deleted... returning home";
+                setTimeout(() => {
+                    this.$router.push({ name: 'home' });
+                }, 3000);
+            }).catch(() => {
+                this.message = "Failed to delete the item. Please try again.";
+            })
+        }
+    }
 }
 </script>
 

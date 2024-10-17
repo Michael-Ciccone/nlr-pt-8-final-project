@@ -191,8 +191,20 @@ const ResourceService = {
   getDeviceById(deviceId) {
     return axios.get(`/devices/${deviceId}`);
   },
+  deleteDeviceById(deviceId) {
+    return axios.delete(`/devices/${deviceId}`)
+  },
+  updateDeviceById(deviceId, device) {
+    return axios.put(`/devices/${deviceId}`, device)
+  },
   getDepartmentById(departmentId) {
     return axios.get(`/departments/${departmentId}`);
+  },
+  deleteDepartmentById(departmentId) {
+    return axios.delete(`/departments/${departmentId}`)
+  },
+  updateDepartmentById(departmentId, department) {
+    return axios.put(`/departments/${departmentId}`, department)
   },
   getModelById(modelId) {
     return axios.get(`/models/${modelId}`);
@@ -200,32 +212,14 @@ const ResourceService = {
   getDevicesByDepartment(departmentId) {
     return axios.get(`/departments/${departmentId}/devices`);
   },
-  async createDepartment(department) {
-    try {
-      const response = await axios.post('/api/departments', department);
-      return response.data;
-    } catch (error) {
-      console.error('Error creating department:', error);
-      throw error;
-    }
+  createDepartment(department) {
+    return axios.post('/departments', department);
   },
-  async createDevice(device) {
-    try {
-      const response = await axios.post('/api/devices', device);
-      return response.data;
-    } catch (error) {
-      console.error('Error creating device:', error);
-      throw error;
-    }
+  createDevice(device) {
+    return axios.post('/devices', device);
   },
-  async createModel(model) {
-    try {
-      const response = await axios.post('/api/models', model);
-      return response.data;
-    } catch (error) {
-      console.error('Error creating model:', error);
-      throw error;
-    }
+  createModel(model) {
+    return axios.post('/models', model);
   }
 };
 

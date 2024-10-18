@@ -56,6 +56,15 @@ export function createStore(currentToken, currentUser) {
       SET_MODEL(state, model) {
         state.model = model;
       },
+      ADD_MODEL(state, model) {
+        state.models.push(model);
+      },
+      UPDATE_MODEL(state, updatedModel) {
+        const index = state.models.findIndex(model => model.id === updatedModel.id);
+        if (index !== -1) {
+          state.models.splice(index, 1, updatedModel);
+        }
+      },
       SET_AUTH_TOKEN(state, token) {
         state.token = token;
         localStorage.setItem('token', token);

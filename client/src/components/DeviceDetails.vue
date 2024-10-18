@@ -41,7 +41,7 @@
                 <router-link id="create-model-button" :to="{ name: 'CreateModel' }">
                     <button>Create New Model</button>
                 </router-link>
-                <router-link id="update-model-button" :to="{ name: 'CreateModel' }">
+                <router-link id="update-model-button" :to="{ name: 'UpdateModel' }">
                     <button>Update Current Model</button>
                 </router-link>
             </div>

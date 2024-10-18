@@ -113,7 +113,7 @@ button:hover {
 
 h2 {
   font-family: Tahoma, sans-serif;
-  font-size: 25px;
+  font-size: 27px;
 }
 
 h3 {

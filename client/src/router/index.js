@@ -13,6 +13,7 @@ import UpdateDepartmentView from '../views/UpdateDepartmentView.vue'
 import CreateDeviceView from '../views/CreateDeviceView.vue'
 import UpdateDeviceView from '../views/UpdateDeviceView.vue'
 import CreateModelView from '../views/CreateModelView.vue'
+import UpdateModelView from '../views/UpdateModelView.vue'
 import ErrorView from '../views/ErrorView.vue'
 
 
@@ -122,9 +123,9 @@ const routes = [
     }
   },
   {
-    path: '/models/update',
+    path: '/model/update/:deviceId',
     name: 'UpdateModel',
-    component: CreateDeviceView,
+    component: UpdateModelView,
     meta: {
       requiresAuth: true
     }

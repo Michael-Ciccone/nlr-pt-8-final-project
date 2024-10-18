@@ -1,79 +1,65 @@
 <template>
-    <div id="create-model">
-      <form v-on:submit.prevent="createModel">
-        <h1>Create Model</h1>
-        <div id="fields">
-          <label for="modelName">Model Name</label>
-          <input
-            type="text"
-            id="modelName"
-            placeholder="Model name..."
-            v-model="model.modelName"
-            required
-            autofocus
-          />
-          <label for="manufacturerName">Manufacturer Name</label>
-          <input
-            type="text"
-            id="manufacturerName"
-            placeholder="Manufacturer name..."
-            v-model="model.manufacturerName"
-            required
-          />
-          <label for="maintenanceSchedule">Maintenance Schedule</label>
-          <input
-            type="text"
-            id="maintenanceSchedule"
-            placeholder="Maintenance schedule..."
-            v-model="model.maintenanceSchedule"
-            required
-          />
-          <label for="description">Description</label>
-          <input
-            type="text"
-            id="description"
-            placeholder="Description..."
-            v-model="model.description"
-            required
-          />
-          <div></div>
-          <div>
-            <button type="submit">Create Model</button>
-          </div>
+  <div id="create-model">
+    <form v-on:submit.prevent="createModel">
+      <h1>Create Model</h1>
+      <div id="fields">
+        <label for="modelName">Model Name</label>
+        <input type="text" id="modelName" placeholder="Model name..." v-model="model.modelName" required autofocus />
+        <label for="manufacturerName">Manufacturer Name</label>
+        <input type="text" id="manufacturerName" placeholder="Manufacturer name..." v-model="model.manufacturerName"
+          required />
+        <label for="maintenanceSchedule">Maintenance Schedule</label>
+        <input type="text" id="maintenanceSchedule" placeholder="Maintenance schedule..."
+          v-model="model.maintenanceSchedule" required />
+        <label for="description">Description</label>
+        <input type="text" id="description" placeholder="Description..." v-model="model.modelDescription" required />
+        <div></div>
+        <div>
+          <button type="submit">Create Model</button>
         </div>
-        <hr />
-      </form>
-    </div>
-  </template>
+      </div>
+      <hr />
+      <p v-if="message">{{ message }}</p>
+    </form>
+  </div>
+</template>
   
-  <script>
-  import ResourceService from '../services/ResourceService';
-  
-  export default {
-    data() {
-      return {
-        model: {
-          modelName: "",
-          manufacturerName: "",
-          maintenanceSchedule: "",
-          description: "",
-        },
-      };
-    },
-    methods: {
-        createModel() {
-      ResourceService.createModel(this.model).then(() => {
-        this.$router.push({ name: 'home' });
-      }).catch((error) => {
-        console.error('Failed to create model:', error);
-      });
+<script>
+import ResourceService from '../services/ResourceService';
+
+export default {
+  data() {
+    return {
+      model: {
+        modelName: "",
+        manufacturerName: "",
+        maintenanceSchedule: "",
+        modelDescription: "",
+      },
+      message: ""
+    };
+  },
+  methods: {
+    createModel() {
+      ResourceService.createModel(this.model).then((response) => {
+
+        const newModel = response.data;
+        this.$store.commit('ADD_MODEL', newModel);
+
+        this.message = "Item successfully created... returning home";
+        setTimeout(() => {
+          this.$router.push({ name: 'home' });
+        }, 3000);
+      }).catch(() => {
+        this.message = "Failed to create the item. Please try again.";
+      })
     }
   }
-  };
-  </script>
+}
+</script>
   
-  <style scoped>
-  #create-model {
+<style scoped>
+#create-model {
   max-width: 500px;
   margin: 80px auto;
   padding: 40px;
@@ -137,4 +123,4 @@ hr {
   background-color: #e1e1e1;
   margin: 20px 0;
 }
-  </style>
+</style>

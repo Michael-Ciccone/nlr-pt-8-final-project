@@ -12,7 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:5173")
+@CrossOrigin
 @RequestMapping("/technicians")
 public class TechnicianController {
 

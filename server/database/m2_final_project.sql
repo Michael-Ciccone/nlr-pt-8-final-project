@@ -82,7 +82,7 @@ insert into technician (full_name, email_address) values ('Tamarra Clemas', 'tcl
 insert into technician (full_name, email_address) values ('Mart Nelmes', 'mnelmes9@digg.com');
 
 
-insert into department (department_name, base_maintenance_month, assigned_technician) values ('Pulmonary', 11, 'Hulda Dodimead');
+insert into department (department_name, base_maintenance_month, assigned_technician) values ('Emergency', 11, 'Hulda Dodimead');
 insert into department (department_name, base_maintenance_month, assigned_technician) values ('NICU', 7, 'Felicity Ivashechkin');
 insert into department (department_name, base_maintenance_month, assigned_technician) values ('Clinical Research', 3, 'Ame Kearney');
 insert into department (department_name, base_maintenance_month, assigned_technician) values ('Urgent Care', 4, 'Jessy MacConneely');

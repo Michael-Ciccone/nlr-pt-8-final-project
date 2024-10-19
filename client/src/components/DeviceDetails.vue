@@ -37,7 +37,7 @@
                 </router-link>
                 <button @click="deleteDevice">Delete Current Device</button>
                 <p v-if="message">{{ message }}</p>
-                <p>New or updated model?</p>
+                <p id="edit-model">New or updated model?</p>
                 <router-link id="create-model-button" :to="{ name: 'CreateModel' }">
                     <button>Create New Model</button>
                 </router-link>
@@ -169,6 +169,78 @@ h2 {
 
 #edit-device-button-container h3 {
     font-family: Tahoma, sans-serif;
-    font-size: 20px;
+    font-size: 17px;
+    text-align: left;
+}
+
+@media only screen and (max-width: 450px) {
+
+    #device-details {
+        grid-template-columns: 1fr;
+    }
+
+    #devices-button-container {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+        grid-gap: 10px;
+    }
+
+    ul button {
+        padding: 20px;
+        height: auto;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 15px;
+    }
+
+    #titles {
+        margin-bottom: 15px;
+    }
+
+    #edit-device-button-container {
+        margin-top: 30px;
+        text-align: center;
+        position: static;
+    }
+
+    .vertical-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        max-width: 90%;
+    }
+
+    .vertical-buttons button {
+        font-size: 12px;
+        padding: 4px;
+        width: 100%;
+        max-width: 200px;
+    }
+
+    #edit-device-button-container h3 {
+        font-family: Tahoma, sans-serif;
+        font-size: 12px;
+    }
+
+    #edit-model {
+        font-family: Tahoma, sans-serif;
+        font-size: 5px;
+    }
+
+    #device-details #edit-model {
+        font-family: Tahoma, sans-serif;
+        font-size: 12px;
+    }
+
+    #device-pic img {
+        height: 400px;
+    }
 }
 </style>

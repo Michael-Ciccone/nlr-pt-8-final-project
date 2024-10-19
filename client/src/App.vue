@@ -127,6 +127,8 @@ button:hover {
 .button-container {
   display: flex;
   gap: 10px;
+  justify-content: center;
+  margin-bottom: 6px;
 }
 
 input[type="text"] {
@@ -153,5 +155,66 @@ nav {
   align-items: center;
   justify-content: flex-end;
   padding-right: 20px;
+}
+
+@media only screen and (max-width: 450px) {
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  #medical-app {
+    padding: 10px;
+    overflow-x: hidden;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+
+  #logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  button {
+    width: 100%;
+    line-height: 40px;
+  }
+
+  input[type="text"] {
+    width: 80%;
+    margin: 10px auto 7px auto;
+  }
+
+  nav {
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding: 0;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  footer {
+    height: auto;
+    padding: 10px;
+  }
 }
 </style>

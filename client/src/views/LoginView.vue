@@ -4,25 +4,12 @@
       <h1>Please Sign In</h1>
       <div id="fields">
         <label for="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          placeholder="Username"
-          v-model="user.username"
-          required
-          autofocus
-        />
+        <input type="text" id="username" placeholder="Username" v-model="user.username" required autofocus />
         <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          placeholder="Password"
-          v-model="user.password"
-          required
-        />
+        <input type="password" id="password" placeholder="Password" v-model="user.password" required />
         <div><button type="submit">Sign in</button></div>
       </div>
-      <hr/>
+      <hr />
       Need an account? <router-link v-bind:to="{ name: 'register' }">Register!</router-link>
     </form>
   </div>
@@ -141,5 +128,4 @@ a:hover {
   text-decoration: underline;
   color: #0056b3;
 }
-
 </style>

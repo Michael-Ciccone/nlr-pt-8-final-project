@@ -10,7 +10,7 @@
         <button>Asset {{ device.id }}</button>
       </li>
     </ul>
-    <section id="edit-device-button-container">
+    <section id="edit-department-button-container">
       <h3 class="technician-tools">Technician Tools:</h3>
       <div class="vertical-buttons">
         <router-link id="create-department-button" :to="{ name: 'CreateDepartment' }">
@@ -124,5 +124,85 @@ h3 {
 #titles {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.technician-tools {
+  font-size: 15px;
+}
+
+.vertical-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.vertical-buttons button {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+#edit-department-button-container {
+  position: absolute;
+  bottom: 50px;
+  left: 20px;
+}
+
+#edit-department-button-container h3 {
+  font-family: Tahoma, sans-serif;
+  font-size: 17px;
+  text-align: left;
+}
+
+
+@media only screen and (max-width: 450px) {
+  #devices-button-container {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    grid-gap: 10px;
+  }
+
+  ul button {
+    padding: 20px;
+    height: auto;
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 15px;
+  }
+
+  #titles {
+    margin-bottom: 15px;
+  }
+
+  #edit-department-button-container {
+    margin-top: 30px;
+    text-align: center;
+    position: static;
+  }
+
+  .vertical-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    max-width: 90%;
+  }
+
+  .vertical-buttons button {
+    font-size: 12px;
+    padding: 4px;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  #edit-department-button-container h3 {
+    font-family: Tahoma, sans-serif;
+    font-size: 12px;
+  }
 }
 </style>

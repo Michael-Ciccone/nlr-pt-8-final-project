@@ -92,4 +92,31 @@ h3 {
     margin-bottom: 20px;
     margin-top: 40px;
 }
+
+@media only screen and (max-width: 450px) {
+    #departments-button-container {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+        grid-gap: 10px;
+    }
+
+    #department-button button {
+        padding: 20px;
+        height: auto;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 15px;
+    }
+
+    #titles {
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+}
 </style>
